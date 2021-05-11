@@ -3,15 +3,16 @@
 
 
 ### Results
-|           File name           |        Number of edges       | Matching Size | Computation and Run-Time |
-| ------------------------------| ---------------------------- | ------------- | ------------------------ |
-| com-orkut.ungraph.csv         | 117185083                    |               |                          |
-| twitter_original_edges.csv    | 63555749                     |               |                          |
-| soc-LiveJournal1.csv          | 42851237                     |  1048576      | 4x5, 2213s               |
-| soc-pokec-relationships.csv   | 22301964                     |  598357       | 4x5, 2452s               |
-| musae_ENGB_edges.csv          | 35324                        |  2296         | 4x4, 10s                 |
-| log_normal_100.csv            | 2671                         |  49           | 4x4, 5s                  |
+|           File name           |        Number of edges       | Matching Size | Computation and Run-Time in GCP |
+| ------------------------------| ---------------------------- | ------------- | ------------------------------- |
+| com-orkut.ungraph.csv         | 117185083                    | ------------- | ------------------------------- |
+| twitter_original_edges.csv    | 63555749                     | ------------- |  ------------------------------ |
+| soc-LiveJournal1.csv          | 42851237                     |  1048576      | 4 nodes x 5 cores, 2213s        |
+| soc-pokec-relationships.csv   | 22301964                     |  598357       | 4 nodes x 5 cores,, 2452s       |
+| musae_ENGB_edges.csv          | 35324                        |  2296         | 4 nodes x 4 cores,, 10s         |
+| log_normal_100.csv            | 2671                         |  49           | 4 nodes x 4 cores,, 5s          |
 #### All of the above reported matchings have been verified using the provided verifier.scala file and can be located in the matchings.zip file.
+#### I was unable to output matchings for com_orkut.ungraph.csv and twitter_original_edges.csv due to memory constraints in GCP. I attempted to fix this by allowing for more memory caching within my program and attempting to allocate more memory for the worker nodes in the GCP but I was unable to allocate enough memory in order for the program to run to completion.
 
 ### Approach
 ##### I had originally planned on implementing the Israeli-Itai algorithm, of which the psuedo code is shown below, because it outputs a maximal matching and is guaranteed to be complete in O(logn) rounds.
