@@ -15,7 +15,9 @@
 
 ### Approach
 ##### I had originally planned on implementing the Israeli-Itai algorithm, of which the psuedo code is shown below, because it outputs a maximal matching and is guaranteed to be complete in O(logn) rounds.
-#### ISRAELI-ITAI PSEUDOCODE HERE
+
+![](images/Israeli-Itai.png)
+
 ##### I had some difficulty implemetning this function, so I graviateted towards Luby's algorithm which we had implemented for the previous project. Luby's algorithm oututs a maximal independent set of vertices, but rather than try to somehow transform this MIS into a maximal matching I decided to implement a modified version of the Luby's bidding variant algorithm for which the pseudocode is shown below.
 #### BIDDING EDGE VARIANT OF LUBY PSEUDOCODE HERE
 ##### Rather than having each vertex generate a random number between 0 and 1, this modified version has each edge generate a number between 0 and 1. These edge values are sent to its vertices, and each vertex accepts the highest edge value among the edges of which it is connected. If two neighboring vertices share the same edge value, then the edge that connects them is added to the maximal matching and the two vertices are deactivated. This process continues until there are no longer any edges in the graph which results in a maximal matching. Both this algoritm and the Israeli-Itai algorithm only provide a 1/2 approximation for the maximum matching, so the matching produced from this algorithm is very likely to contain less edges than the optimal maxium matching. If I were to receive a new test case, I would still beconfident in the algorthm in outputting a maximal matching with a 1/2 approximation, but I would be weary of memory usage depending on the size of the new test case.
